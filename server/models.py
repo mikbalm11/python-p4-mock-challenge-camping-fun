@@ -72,11 +72,11 @@ class Signup(db.Model, SerializerMixin):
     time = db.Column(db.Integer)
 
     # Add relationship
-    activity_id = db.Column(db.Integer, db.ForeignKey('activities.id'))
     camper_id = db.Column(db.Integer, db.ForeignKey('campers.id'))
+    activity_id = db.Column(db.Integer, db.ForeignKey('activities.id'))
 
     # Add serialization rules
-    serialize_rules = ('-activity.signups', '-camper.signups')
+    serialize_rules = ('-camper.signups', '-activity.signups')
 
     # Add validation
     @validates('time')
